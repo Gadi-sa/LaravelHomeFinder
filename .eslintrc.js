@@ -1,6 +1,8 @@
 module.exports = {
+    parser: 'vue-eslint-parser',
     extends: ['eslint:recommended', 'plugin:vue/vue3-recommended'],
     parserOptions: {
+        parser: 'babel-eslint',
         ecmaVersion: 2020,
         sourceType: 'module',
     },
@@ -9,6 +11,10 @@ module.exports = {
         browser: true,
         es6: true,
     },
+    plugins: [
+        'vue',
+        'babel'
+    ],
     rules: {
         indent: ['error', 2],
         quotes: ['warn', 'single'],
@@ -19,6 +25,7 @@ module.exports = {
         'vue/max-attributes-per-line': 'off',
         'vue/no-v-html': 'off',
         'vue/require-default-prop': 'off',
+        'vue/no-multiple-template-root': 'off',
         'vue/singleline-html-element-content-newline': 'off',
         'vue/html-self-closing': [
             'warn',
