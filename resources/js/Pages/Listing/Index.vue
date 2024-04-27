@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Link href="/listing/create">Goto Create</Link>
         <div v-for="listing in listings" :key="listing.id">
             <Link :href="`/listing/${listing.id}`">
                 <ListingAddress :listing="listing" />

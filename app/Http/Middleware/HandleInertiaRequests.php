@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
             //used to display the success message and sharing data with pages
             'flash' => [
                 'success' => $request->session()->get('success')
-            ]
+            ],
         ]);
     }
 }

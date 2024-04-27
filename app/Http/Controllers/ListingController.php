@@ -34,19 +34,20 @@ class ListingController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        // $listing = new Listing();//
-        // $listing->beds = $request->beds;//it takes the value from the request and assigns it to the listing object
-        // $listing->save();
-
-        // we use the above method is used to store the single value in the database which is not recommended we instead use the below method to store the multiple values in the database at once it is called mass assignment we define the fillable property in theListing model to store the multiple values in the database at once
-
         //TODO: Validate/Sanitize/authenticate/CSRF Protect the request data before storing it in the database
         //TODO: Add a success message to the session use flash messages to display the message
-        //TODO: Redirect the user to the index page
         //TODO: Use this validation  for portfolio project in the security section.
 
+        //is used directly to store the data without validation
+        // Listing::create($request->all());
 
-        Listing::create($request->all());
+        Listing::create([
+            $request->validate([
+                'beds' => ['required', 'integer', 'min:1', 'max:20'],
+                'baths' => ['required', 'integer', 'min:1', 'max:20'],
+            ])
+        ]);
+
 
         return redirect()->route('listing.index')
             ->with('success', 'Listing created successfully');
@@ -64,19 +65,6 @@ class ListingController extends Controller
             ]
         );
     }
-
-    // is the same as:
-
-    // public function show(string $id)
-    // {
-    //     return inertia(
-    //         'Listing/Show',
-    //         [
-    //             'listing' => Listing::find($id)
-    //         ]
-    //     );
-    // }
-
 
     /**
      * Show the form for editing the specified resource.
