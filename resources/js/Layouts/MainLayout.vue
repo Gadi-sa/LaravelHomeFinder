@@ -1,8 +1,7 @@
 <template>
     <div>
-        <Link href="/">Main Page</Link>&nbsp;
-        <Link href="/hello">Show Page</Link>&nbsp;
-        <Link href="/listing">Goto Listing</Link>
+        <Link href="/listing">Listings</Link>&nbsp;
+        <Link href="/listing/create">New Listing</Link>
 
         <div v-if="flashSuccess" class="success">
             {{ flashSuccess }}
@@ -19,8 +18,6 @@ const flashSuccess = computed(
     // usepage() is a hook that returns the current page's props
     () => usePage().props.flash.success,
 )
-
-console.log(flashSuccess)
 
 </script>
 

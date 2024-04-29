@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>HomeFinder</title>
 
         @vite('resources/js/app.js') {{-- used to load the js file --}}
         @inertiaHead {{-- used to load the inertia head which is used to load the css file --}}
