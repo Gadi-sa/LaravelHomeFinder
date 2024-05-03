@@ -10,7 +10,7 @@
         @vite('resources/js/app.js') {{-- used to load the js file --}}
         @inertiaHead {{-- used to load the inertia head which is used to load the css file --}}
     </head>
-    <body >
+    <body class="bg-white dark:bg-gray-200 text-gray-800 dark:text-gray-400">
         @inertia
     </body>
 </html>

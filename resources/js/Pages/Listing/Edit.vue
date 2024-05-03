@@ -68,7 +68,7 @@
                 </div>
 
                 <div>
-                    <button type="submit">Eidt</button>
+                    <button type="submit">Edit</button>
                 </div>
             </div>
         </form>
