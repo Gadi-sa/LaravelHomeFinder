@@ -3,6 +3,7 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import MainLayout from '@/Layouts/MainLayout.vue'
 import { ZiggyVue } from 'ziggy'
 import '../css/app.css'
+import 'material-symbols'
 
 createInertiaApp({
     resolve: async (name) => {

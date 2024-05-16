@@ -6,11 +6,14 @@
 
         <title>HomeFinder</title>
 
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
         @routes
         @vite('resources/js/app.js') {{-- used to load the js file --}}
         @inertiaHead {{-- used to load the inertia head which is used to load the css file --}}
+
     </head>
-    <body class="bg-white dark:bg-gray-200 text-gray-800 dark:text-gray-400">
+    <body class="bg-gray-100 text-gray-800">
         @inertia
     </body>
 </html>

@@ -27,7 +27,9 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.15",
+        "animate.css": "^4.1.1",
         "flowbite": "^2.3.0",
+        "material-symbols": "^0.18.0",
         "vuestic-ui": "^1.9.9"
     }
 }
