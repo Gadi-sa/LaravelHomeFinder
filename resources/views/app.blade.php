@@ -13,7 +13,7 @@
         @inertiaHead {{-- used to load the inertia head which is used to load the css file --}}
 
     </head>
-    <body class="bg-gray-100 text-gray-800">
+    <body class="bg-slate-100 text-gray-800">
         @inertia
     </body>
 </html>
