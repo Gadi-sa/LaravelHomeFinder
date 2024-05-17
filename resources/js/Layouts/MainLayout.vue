@@ -15,11 +15,11 @@
                 </Link>
 
                 <div class="flex items-center space-x-4">
-                    <Link :href="route('listing.index')" class="btn flex items-center justify-center py-2 px-4">
+                    <Link :href="route('listing.index')" class="flex items-center justify-center py-2 px-4">
                     Listings
                     </Link>
                     <Link :href="route('listing.create')"
-                        class="btn flex items-center justify-center py-1 px-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-md">
+                        class="flex items-center justify-center py-1 px-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md">
                     <svg class="w-4 h-4 text-gray-100 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
