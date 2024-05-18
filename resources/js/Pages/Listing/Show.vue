@@ -15,20 +15,56 @@
 
             <Box>
                 <template #header>
-                    Offer
+                    Monthly Payment
                 </template>
-                Make an offer
+                <div>
+                    <VaSlider :label="'Interest rate (' + interestRate + '%)'" invert-label
+                        v-model.number="interestRate" track-label-visible :min="0.1" :max="30" :step="0.1"
+                        class="mt-3 mb-3" track-color="warning" />
+
+                    <VaSlider :label="'Duration (' + duration + 'years)'" invert-label v-model.number="duration"
+                        track-label-visible :min="3" :max="35" :step="1" class="mt-4" track-color="warning" />
+
+                    <div class="text-gray-600 mt-2">
+                        <div class="text-gray-400">Your monthly payment</div>
+                        <Price :price="monthlyPayment" class="text-3xl" />
+                    </div>
+                </div>
             </Box>
+
         </div>
     </div>
 </template>
 
 <script setup>
-import Box from '@/Components/UI/Box.vue';
-import ListingAddress from '@/Components/ListingAddress.vue';
-import Price from '@/Components/Price.vue';
-import ListingDetails from '@/Components/ListingDetails.vue';
-defineProps({
+import Box from '@/Components/UI/Box.vue'
+import ListingAddress from '@/Components/ListingAddress.vue'
+import Price from '@/Components/Price.vue'
+import ListingDetails from '@/Components/ListingDetails.vue'
+import { VaSlider } from 'vuestic-ui'
+import { ref, computed } from 'vue'
+
+const interestRate = ref(2.5)
+const duration = ref(25)
+
+const props = defineProps({
     listing: Object,
+})
+
+// Define a computed property for the monthly payment
+const monthlyPayment = computed(() => {
+    // The initial amount of the loan
+    const principle = props.listing.price
+
+    // The monthly interest rate, converted from an annual rate
+    const monthlyInterest = interestRate.value / 100 / 12
+
+    // The total number of payments over the life of the loan
+    const numberOfPaymentMonths = duration.value * 12
+
+    // Calculate the monthly payment using the formula for an amortizing loan
+    // The formula is: [P * r * (1 + r)^n] / [(1 + r)^n - 1]
+    // where P is the principal, r is the monthly interest rate, and n is the number of payments
+    return principle * monthlyInterest * (Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) / (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1)
 })
 </script>

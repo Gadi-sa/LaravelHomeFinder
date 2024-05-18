@@ -3,8 +3,8 @@
         <header class="fixed top-0 w-full z-50 border-b border-gray-100 shadow-lg px-4 lg:px-6 py-2.5 bg-white">
             <nav class="flex items-center justify-between mx-auto">
                 <Link :href="route('listing.index')">
-                <span class="text-lg font-semibold whitespace-nowrap">
-                    <span class="text-blue-600">Home</span><span
+                <span class="text-lg font-semibold whitespace-nowrap ">
+                    <span class="text-blue-600 ">Home</span><span
                         class="relative inline-block text-white font-extrabold group">
                         Finder
                         <span

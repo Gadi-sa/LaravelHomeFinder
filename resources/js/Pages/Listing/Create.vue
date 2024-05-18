@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="create" class="p-4 bg-white rounded-lg shadow-lg">
+        <form @submit.prevent="create" class="p-4 bg-white rounded-lg shadow-md">
             <h2 class="h2 ">Create Listing</h2>
             <div class="grid grid-cols-6 gap-4">
                 <!-- Beds Input -->

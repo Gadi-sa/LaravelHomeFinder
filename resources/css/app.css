@@ -12,7 +12,7 @@
     }
 
     .input {
-        @apply block w-full p-2 rounded-lg border border-gray-300;
+        @apply block w-full p-1.5 rounded-lg border border-gray-300;
     }
 
     .input-error {
