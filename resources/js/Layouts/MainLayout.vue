@@ -31,9 +31,9 @@
             </nav>
         </header>
 
-        <main class="pt-20 px-4 lg:px-6 py-2.5">
+        <main class="pt-20 px-4 lg:px-6 py-2.5 w-full">
             <div v-if="flashSuccess"
-                class="animate__animated animate__bounceInDown timer p-4 mb-4 text-sm text-green-800 border-t-2 border-green-400 rounded-lg bg-green-50"
+                class="animate__animated animate__bounceInDown timer p-2 mb-4 text-md text-green-800 border-t-2 border-green-400 rounded-lg bg-green-100 shadow-lg"
                 role="alert">
                 <span class="font-medium"> {{ flashSuccess }} </span>
             </div>
@@ -56,5 +56,23 @@ const flashSuccess = computed(() => usePage().props.flash.success);
 
 .timer {
     animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: 2;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(255, 8, 8, 0.253), 0 6px 20px 0 rgba(237, 233, 7, 0.293);
+    animation-name: fadeOut;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
 </style>
