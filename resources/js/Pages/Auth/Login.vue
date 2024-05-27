@@ -18,8 +18,7 @@
                     {{ form.errors.password }}
                 </div>
             </div>
-
-            <button type="submit" class="form-button flex justify-end mt-4 ml-auto">
+            <button type="submit" class="form-button w-full flex justify-center mt-4">
                 Login
             </button>
         </form>

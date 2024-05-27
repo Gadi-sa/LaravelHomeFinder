@@ -20,26 +20,38 @@ class AuthController extends Controller
                 'email' => 'required', 'string', 'email',
                 'password' => 'required', 'string'
             ]),
-            true
+            true // is used to remember the user in the session and create a session cookie.
         )) {
             throw ValidationException::withMessages([
                 //TODO: For PF under security "information disclosure".
                 //TODO: When the authentication fails, we should not provide the user with too much detail about what went wrong. weather it was the email or the password that was incorrect, beacuse the attacker can use this info to check if the email is correct and then try to guess the password.
-                'email' => 'Invalid credentials.',
-                'password' => 'Invalid credentials.'
+
+                'email' => 'Login failed. Please check your credentials.',
+                'password' => 'Login failed. Please check your credentials.'
             ]);
         }
 
         //TODO: For PF under security "Session Security".
         //TODO: regeneratig the session id after a successful login is a good practice to prevent session fixation attacks, where an attacker can steal a session id and use it to impersonate the user.
+
         $request->session()->regenerate();
 
         return redirect()->intended('/listing');
     }
 
-
-
-    public function destroy()
+    public function destroy(Request $request)
     {
+        Auth::logout();
+
+        //TODO: For PF under security "Session Security".
+        //TODO: After logging out, we should invalidate the session to prevent session fixation attacks, where an attacker can steal a session id and use it to impersonate the user.
+
+        $request->session()->invalidate();
+
+        //TODO: For PF under security "CSRF Protection".
+        //TODO: After logging out, we should regenerate the CSRF token to prevent CSRF attacks, where an attacker can trick the user into performing actions on the website without their consent.
+        $request->session()->regenerateToken();
+
+        return redirect()->route('listing.index');
     }
 }

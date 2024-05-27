@@ -18,6 +18,7 @@
                     <Link :href="route('listing.index')" class="flex items-center justify-center py-2 px-4">
                     Listings
                     </Link>
+
                     <Link :href="route('listing.create')"
                         class="flex items-center justify-center py-1 px-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md">
                     <svg class="w-4 h-4 text-gray-100 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +28,22 @@
                     </svg>
                     <span class="hidden sm:inline">New Listing</span>
                     </Link>
+
+                    <div v-if="user">
+                        <div>
+                            {{ user.name }}
+                        </div>
+
+                        <div >
+                            <Link :href="route('logout')" method="delete" as="button"> Logout</Link>
+                        </div>
+                    </div>
+
+                    <div v-else>
+                        <Link :href="route('login')" class="flex items-center justify-center py-2 px-4">
+                            Login
+                        </Link>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -48,6 +65,8 @@ import { computed } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";
 
 const flashSuccess = computed(() => usePage().props.flash.success);
+
+const user = computed(() => usePage().props.user);
 
 </script>
 
