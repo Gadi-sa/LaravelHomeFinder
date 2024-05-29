@@ -11,10 +11,17 @@
                 </div>
             </div>
 
-            <div class="absolute top-2 right-2 flex space-x-2">
+
+            <!-- //TODO: for PF under verbetervoorstellen -->
+            <!-- Encountered a bug with the following code. If a user who is not logged in attempts to delete a listing, an
+            error occurs: "DELETE http://127.0.0.1:8000/login 405 (Method Not Allowed)". To resolve this issue, I've
+            implemented a change to allow only authenticated users to delete listings. -->
+
+            <div v-if="user" class="absolute top-2 right-2 flex space-x-2">
                 <Link :href="route('listing.edit', { listing: listing.id })" class="text-red-500 hover:text-red-700">
                 <span class="material-symbols-outlined">edit</span>
                 </Link>
+
                 <Link :href="route('listing.destroy', { listing: listing.id })" method="DELETE" as="button"
                     class="text-gray-500 hover:text-gray-700">
                 <span class="material-symbols-outlined">delete</span>
@@ -25,13 +32,18 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import ListingAddress from '@/Components/ListingAddress.vue';
-import Box from '@/Components/UI/Box.vue';
-import ListingDetails from '@/Components/ListingDetails.vue';
-import Price from '@/Components/Price.vue';
+import { computed } from "vue"
+import { Link, usePage } from "@inertiajs/vue3"
+
+// Components
+import Box from '@/Components/UI/Box.vue'
+import ListingAddress from '@/Components/ListingAddress.vue'
+import ListingDetails from '@/Components/ListingDetails.vue'
+import Price from '@/Components/Price.vue'
+
+const user = computed(() => usePage().props.user)
 
 defineProps({
     listings: Array,
-});
+})
 </script>

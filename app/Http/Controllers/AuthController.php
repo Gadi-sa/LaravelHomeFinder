@@ -50,6 +50,11 @@ class AuthController extends Controller
 
         //TODO: For PF under security "CSRF Protection".
         //TODO: After logging out, we should regenerate the CSRF token to prevent CSRF attacks, where an attacker can trick the user into performing actions on the website without their consent.
+
+        //Todo: Regenerate the CSRF token
+        // To prevent CSRF attacks laravel provides a CSRF token that is used to verify that the authenticated user is the one actually making the requests to the application. and it compare the token in the request with the token stored in the session are the same. so if the token in the request is not the same as the token stored in the session, the request will be rejected.
+        //  the other purpose of using laravel with
+        // Laravel prevents CSRF attacks by generating a CSRF "token" for every active user session managed by the application. This token is used to verify that the authenticated user is the one actually making the requests to the application.
         $request->session()->regenerateToken();
 
         return redirect()->route('listing.index');

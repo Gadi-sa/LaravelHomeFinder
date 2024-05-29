@@ -13,6 +13,8 @@ class IndexController extends Controller
     {
         // dd(Listing::all());
         // dd(Auth()->user());
+        // dd(Auth::check());
+
         return inertia(
             'Index/Index',
             [
