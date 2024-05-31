@@ -1,6 +1,6 @@
 <template>
     <div>
-<form @submit.prevent="login" class="p-10 rounded-lg drop-shadow-xl w-full sm:w-1/2 lg:w-1/3 mx-auto">
+        <form @submit.prevent="login" class="mt-10 rounded-lg drop-shadow-xl w-full sm:w-1/2 lg:w-1/3 mx-auto">
             <div class="flex justify-end mb-6">
                 <h2 class="text-2xl font-bold relative inline-block">
                     <span
@@ -27,13 +27,22 @@
             <button type="submit" class="form-button w-full flex justify-center mb-4">
                 Login
             </button>
+
+            <div class="mt-4 text-center">
+                <Link :href="route('user-account.create')" class="text-blue-500  hover:text-blue-700">Don't have an
+                account?
+                <span class="underline">
+                    Register here
+                </span>
+                </Link>
+            </div>
         </form>
     </div>
 
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3'
+import { useForm, Link } from '@inertiajs/vue3'
 
 const form = useForm({
     email: null,
