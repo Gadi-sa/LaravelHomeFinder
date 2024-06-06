@@ -5,6 +5,7 @@ use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\SearchController;
 
 // for testing purposes
 Route::get('/', [IndexController::class, 'index']);
@@ -33,5 +34,7 @@ Route::delete('logout', [AuthController::class, 'destroy'])
     ->name('logout');
 
 Route::resource('user-account', UserAccountController::class)
-    ->only(['create', 'store'])
-    ;
+    ->only(['create', 'store']);
+
+Route::get('search', [SearchController::class, 'index'])
+    ->name('search.index');
