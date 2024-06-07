@@ -1,12 +1,5 @@
 <template>
     <div>
-        <va-input type="text" v-model="searchQuery" @input="performSearch" placeholder="Search listings..."
-            class="mb-4 p-2 border rounded" clearable>
-            <template v-slot:clear-icon>
-                <span class="material-symbols-outlined">search_off</span>
-            </template>
-        </va-input>
-
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" v-if="listings.length">
             <Box v-for="listing in listings" :key="listing.id" class="relative p-4 bg-white shadow-md rounded-lg">
                 <div class="flex">
@@ -40,9 +33,8 @@
 </template>
 
 <script setup>
-import { ref, watch, defineProps } from 'vue'
+import { ref, defineProps } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
-import { VaInput } from 'vuestic-ui'
 
 // Components
 import Box from '@/Components/UI/Box.vue'
@@ -56,18 +48,4 @@ const props = defineProps({
 })
 const user = usePage().props.user
 const listings = ref(props.listings)
-const searchQuery = ref(props.search || '')
-
-const performSearch = () => {
-    const query = searchQuery.value
-    if (query) {
-        window.location.href = route('search.index', { search: query })
-    } else {
-        window.location.href = route('search.index')
-    }
-}
-
-watch(searchQuery, () => {
-    performSearch()
-})
 </script>
