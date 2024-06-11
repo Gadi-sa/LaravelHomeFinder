@@ -100,30 +100,30 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue";
-import { Link, usePage } from "@inertiajs/vue3";
+import { computed, ref, watch } from "vue"
+import { Link, usePage } from "@inertiajs/vue3"
 
-const flashSuccess = computed(() => usePage().props.flash.success);
-const user = computed(() => usePage().props.user);
-const isDropdownOpen = ref(false);
-const searchQuery = ref('');
+const flashSuccess = computed(() => usePage().props.flash.success)
+const user = computed(() => usePage().props.user)
+const isDropdownOpen = ref(false)
+const searchQuery = ref('')
 
 const toggleDropdown = () => {
-    isDropdownOpen.value = !isDropdownOpen.value;
-};
+    isDropdownOpen.value = !isDropdownOpen.value
+}
 
 const performSearch = () => {
-    const query = searchQuery.value;
+    const query = searchQuery.value
     if (query) {
-        window.location.href = route('search.index', { search: query });
+        window.location.href = route('search.index', { search: query })
     } else {
-        window.location.href = route('search.index');
+        window.location.href = route('search.index')
     }
-};
+}
 
 watch(user, () => {
-    isDropdownOpen.value = false;
-});
+    isDropdownOpen.value = false
+})
 </script>
 
 <style scoped>
