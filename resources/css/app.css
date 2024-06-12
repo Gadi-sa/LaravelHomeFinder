@@ -21,4 +21,9 @@
     .form-button {
         @apply text-blue-700 hover:text-white border border-blue-600 hover:bg-blue-700  font-bold rounded-lg text-sm px-10 py-2 text-center shadow-xl;
     }
+
+    .button-transition {
+        @apply  transition-all duration-300 transform hover:scale-105;
+    }
+
 }

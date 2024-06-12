@@ -18,7 +18,6 @@ class SearchController extends Controller
 
             ->get();
 
-
         return inertia('Search/Index', [
             'listings' => $listings,
 
