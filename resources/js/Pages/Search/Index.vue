@@ -26,22 +26,26 @@
             </Box>
         </div>
 
-        <div v-else class="flex flex-col items-center justify-center text-center text-gray-500 mt-10 space-y-4">
-            <span class="material-symbols-outlined animate-bounce">
+        <div v-else
+            class="flex flex-col items-center justify-center text-center text-gray-500 mt-10 space-y-4 bg-gray-100 rounded-lg shadow-lg p-6 animate__animated animate__fadeIn">
+            <span
+                class="material-symbols-outlined text-red-400 text-6xl animate__animated animate__bounce animate__infinite">
                 search_off
             </span>
-            <p class="hover:text-gray-700 transition-colors duration-300 cursor-pointer">
+            <p class="text-lg font-semibold hover:text-gray-700 transition-colors duration-300 cursor-pointer">
                 No listings found.
             </p>
 
             <p class="text-gray-400 text-sm mt-2">
                 Try searching for something else.
             </p>
-            <Link :href="route('listing.create')" class="text-blue-500 text-md hover:text-blue-700 button-transition">
+            <Link :href="route('listing.create')"
+                class="text-blue-400 text-md hover:text-blue-700 transition-colors duration-300">
             Or create a new listing
             <span class="underline">Here</span>
             </Link>
         </div>
+
 
     </div>
 </template>
