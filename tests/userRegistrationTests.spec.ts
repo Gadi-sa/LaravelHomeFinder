@@ -54,7 +54,15 @@ test.describe('User Registration Process', () => {
     test('Create account action', async ({ page }) => {
         await page.goto('http://127.0.0.1:8000/user-account/create');
         await page.getByLabel('Your Name').fill('Mr Tester');
-        await page.getByLabel('Email').fill('mr.tester@example.com');
+
+        //for every test case, we need to change the email address
+        // await page.getByLabel('Email').fill('mr.tester01@example.com');
+
+        // Generate a unique email address using a timestamp
+        const uniqueTimestamp = Date.now();
+        const uniqueEmail = `mr.tester${uniqueTimestamp}@example.com`;
+        await page.getByLabel('Email').fill(uniqueEmail);
+
         await page.getByLabel('Password', { exact: true }).click();
         await page.getByLabel('Password', { exact: true }).fill('P@ssw0rd_1KL');
         await page.getByLabel('Confirm Password').click();
