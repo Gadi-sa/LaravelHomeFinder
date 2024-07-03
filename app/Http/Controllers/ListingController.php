@@ -50,7 +50,13 @@ class ListingController extends Controller
         //     ])
         // ]);
 
-        Listing::create(
+        /**
+         * Create a new listing for the authenticated user.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
+        $request->user()->listings()->create(
             $request->validate([
                 'beds' => ['required', 'integer', 'min:1', 'max:20'],
                 'baths' => ['required', 'integer', 'min:1', 'max:20'],

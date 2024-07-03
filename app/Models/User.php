@@ -46,6 +46,9 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the listings for the user.
+     */
     public function listings(): HasMany
     {
         return $this->hasMany(
