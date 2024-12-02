@@ -1,5 +1,7 @@
 <?php
 
+// This controller is for testing purposes only
+
 namespace App\Http\Controllers;
 
 use App\Models\Listing;

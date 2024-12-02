@@ -15,7 +15,8 @@ class ListingController extends Controller
         return inertia(
             'Listing/Index',
             [
-                'listings' => Listing::all()
+                'listings' => Listing::orderByDesc('created_at')
+                    ->paginate(10)
             ]
         );
     }
@@ -38,19 +39,13 @@ class ListingController extends Controller
         //TODO: Add a success message to the session use flash messages to display the message
         //TODO: Use this validation  for portfolio project in the security section.
 
-        //is used directly to store the data without validation
-        // Listing::create($request->all());
-
-        // spread operator is used to merge the two arrays and create a new array
-        // Listing::create([
-        //     ...$request->all(),
-        //     ...$request->validate([
-        //         'beds' => ['required', 'integer', 'min:1', 'max:20'],
-
-        //     ])
-        // ]);
-
-        Listing::create(
+        /**
+         * Create a new listing for the authenticated user.
+         *
+         * @param  \Illuminate\Http\Request  $request
+         * @return \Illuminate\Http\Response
+         */
+        $request->user()->listings()->create(
             $request->validate([
                 'beds' => ['required', 'integer', 'min:1', 'max:20'],
                 'baths' => ['required', 'integer', 'min:1', 'max:20'],
