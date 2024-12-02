@@ -23,7 +23,22 @@
     }
 
     .button-transition {
-        @apply  transition-all duration-300 transform hover:scale-105;
+        @apply transition-all duration-300 transform hover:scale-105;
     }
 
+    .pagination-link {
+        @apply inline-block px-4 py-2 rounded-md transition-all duration-300 ease-in-out;
+    }
+
+    .active-link {
+        @apply bg-gray-100 text-blue-600 drop-shadow-md scale-110;
+    }
+
+    .inactive-link {
+        @apply text-gray-500  bg-white shadow-sm;
+    }
+
+    .inactive-link:hover {
+        @apply bg-blue-50 shadow-md -translate-y-1;
+    }
 }
