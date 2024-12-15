@@ -26,7 +26,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return inertia('Listing/Create'); //
+        return inertia('Listing/Create');
     }
 
     /**
@@ -34,11 +34,6 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        //TODO: Validate/Sanitize/authenticate/CSRF Protect the request data before storing it in the database
-        //TODO: Add a success message to the session use flash messages to display the message
-        //TODO: Use this validation  for portfolio project in the security section.
-
         /**
          * Create a new listing for the authenticated user.
          *
@@ -81,8 +76,8 @@ class ListingController extends Controller
     public function edit(Listing $listing)
     {
         return inertia(
-            'Listing/Edit',
-            [
+            component: 'Listing/Edit',
+            props: [
                 'listing' => $listing
             ]
         );

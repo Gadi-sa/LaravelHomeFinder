@@ -7,11 +7,14 @@ use App\Models\Listing;
 
 class SearchController extends Controller
 {
+    /**
+     * Handle the search request and return search results.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Inertia\Response
+     */
     public function index(Request $request)
     {
-        //TODO: add validation, error handling and update the search to be more specific
-        // get the search term from the request
-
         $request->validate([
             'search' => 'required|string|max:255',
         ]);
@@ -25,11 +28,12 @@ class SearchController extends Controller
 
             ->get();
 
-        return inertia('Search/Index', [
-            'listings' => $listings,
-
-            // pass the search term to the view
-            'search' => $search,
-        ]);
+        return inertia(
+            'Search/Index',
+            [
+                'listings' => $listings,
+                'search' => $search,
+            ]
+        );
     }
 }

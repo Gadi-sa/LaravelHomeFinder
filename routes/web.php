@@ -7,34 +7,33 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\SearchController;
 
-// for testing purposes
+// For Testing purposes
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/hello', [IndexController::class, 'show'])
     ->middleware('auth');
 
-//TODO: for PF under security: Implement route protection using middleware for security. Middleware filters HTTP requests before they reach the controller, enabling user authentication and authorization.
-
-// only authenticated users can create, edit, update, and delete listings
+// Listing Routes
+// Protected listing actions
 Route::resource('listing', ListingController::class)
     ->only(['create', 'store', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
-//  any user, authenticated or not, can access these other methods (like index or show).
+// Public listing actions
 Route::resource('listing', ListingController::class)
     ->except(['create', 'store', 'edit', 'update', 'destroy']);
 
-// Authentication routes
+// Auth Routes
 Route::get('login', [AuthController::class, 'create'])
     ->name('login');
-
 Route::post('login', [AuthController::class, 'store'])
     ->name('login.store');
-
 Route::delete('logout', [AuthController::class, 'destroy'])
     ->name('logout');
 
+// User Account Routes
 Route::resource('user-account', UserAccountController::class)
     ->only(['create', 'store']);
 
+// Search Routes
 Route::get('search', [SearchController::class, 'index'])
     ->name('search.index');

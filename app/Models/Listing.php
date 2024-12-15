@@ -10,6 +10,9 @@ class Listing extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     */
     protected $fillable = [
         'beds',
         'baths',
@@ -21,6 +24,9 @@ class Listing extends Model
         'price',
     ];
 
+    /**
+     *  The owner function defines a belongsTo relationship between the Listing and User models.
+     */
     public function owner(): BelongsTo
     {
         return $this->belongsTo(

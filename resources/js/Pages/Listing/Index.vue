@@ -12,16 +12,6 @@
                     </div>
                 </div>
 
-                <!-- //TODO: for PF under verbetervoorstellen -->
-                <!-- Encountered a bug with the following code. If a user who is not logged in attempts to delete a listing, an
-                error occurs: "DELETE http://127.0.0.1:8000/login 405 (Method Not Allowed)". To resolve this issue, I've
-                implemented a change to allow only authenticated users to delete listings.-->
-
-                <!-- To ensure the edit and delete buttons are visible to the owner of the listing only,
-                implement a conditional rendering based on the user's ownership of the listing.
-                This can be achieved by comparing the current user's ID with the owner ID of the listing.
-                If they match, render the buttons; otherwise, do not render them. -->
-
                 <!-- Edit and Delete Buttons -->
                 <div v-if="user && listing.user_id === user.id" class="absolute top-2 right-2 flex space-x-2">
                     <Link :href="route('listing.edit', { listing: listing.id })"

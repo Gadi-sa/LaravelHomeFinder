@@ -8,7 +8,9 @@
 <script setup>
 import { Link } from "@inertiajs/vue3"
 
-const props = defineProps({ links: Array })
+const props = defineProps({
+    links: Array
+})
 
 // Method to determine the class based on link active state
 const getClass = (isActive) => {
